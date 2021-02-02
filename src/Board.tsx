@@ -1,7 +1,9 @@
 import React from "react";
 import Knight from "./Knight";
 import Square from "./Square";
-import { moveKnight } from "./Game";
+import { moveKnight } from "./game";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const handleSqareClick = (toX: number, toY: number) => {
   moveKnight(toX, toY);
@@ -36,16 +38,18 @@ const Board: React.FC<BoardProps> = (props) => {
     squares.push(renderSquare(i, knightPosition));
   }
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexWrap: "wrap",
-      }}
-    >
-      {squares}
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        {squares}
+      </div>
+    </DndProvider>
   );
 };
 

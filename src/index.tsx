@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Board from "./Board";
 import "./index.css";
-import { observe } from "./Game";
+import { observe } from "./game";
 import reportWebVitals from "./reportWebVitals";
 
 observe((knightPosition: [number, number]) => {
